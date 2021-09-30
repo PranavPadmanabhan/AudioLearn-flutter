@@ -1,9 +1,9 @@
-import 'package:audio_learn/screens/LoginScreen.dart';
+import 'package:audio_learn/screens/AuthenticationScreen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
   runApp(MaterialApp(
-    home: LoginScreen(),
+    home: AuthenticationScreen(),
     debugShowCheckedModeBanner: false,
   ));
 }
