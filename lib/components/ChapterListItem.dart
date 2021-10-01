@@ -32,7 +32,7 @@ Widget ChapterListItem({context, required name}) {
           child: Center(
             child: Icon(
               Icons.arrow_forward_ios,
-              color: Colors.green,
+              color: Color.fromRGBO(1, 138, 22, 1),
               size: 24,
             ),
           ),

@@ -44,8 +44,17 @@ class _PlaylistScreenState extends State<PlaylistScreen> {
         child: Center(
           child: ListView.builder(
             itemBuilder: (context, index) {
-              return PlayListItem(
-                  name: playlist[index]['name'].toString(), context: context);
+              return GestureDetector(
+                onTap: () {
+                  setState(() {
+                    selectedIndex = index;
+                  });
+                },
+                child: PlayListItem(
+                    name: playlist[index]['name'].toString(),
+                    context: context,
+                    playing: index == selectedIndex ? true : false),
+              );
             },
             itemCount: playlist.length,
           ),

@@ -6,7 +6,7 @@ Widget CategoryListItem({required title, required bool active}) {
       padding: EdgeInsets.all(10),
       margin: EdgeInsets.all(20),
       decoration: BoxDecoration(
-          color: active ? Colors.green : Colors.grey.shade300,
+          color: active ? Color.fromRGBO(1, 138, 22, 1) : Colors.grey.shade300,
           borderRadius: BorderRadius.circular(20)),
       height: 150,
       width: 150,

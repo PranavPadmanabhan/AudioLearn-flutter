@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-Widget PlayListItem({required name, context, bool playing = false}) {
+Widget PlayListItem({required name, context, required playing}) {
   var width = MediaQuery.of(context).size.width;
   return Container(
     margin: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
@@ -17,7 +17,7 @@ Widget PlayListItem({required name, context, bool playing = false}) {
           image: playing
               ? AssetImage("assets/images/W.png")
               : AssetImage("assets/images/ic4.png"),
-          width: 30,
+          width: playing ? 22 : 30,
         ),
         Text(name.toString()),
         Image(

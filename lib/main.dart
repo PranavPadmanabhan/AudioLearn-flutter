@@ -1,3 +1,4 @@
+import 'package:audio_learn/components/AudioPlayer.dart';
 import 'package:audio_learn/screens/AuthenticationScreen.dart';
 import 'package:audio_learn/screens/ChapterScreen.dart';
 import 'package:audio_learn/screens/HomeScreen.dart';
@@ -7,9 +8,7 @@ import 'package:flutter/material.dart';
 
 void main() {
   runApp(MaterialApp(
-    home: PlaylistScreen(
-      chapterId: 1,
-    ),
+    home: AudioPlayer(),
     debugShowCheckedModeBanner: false,
   ));
 }
