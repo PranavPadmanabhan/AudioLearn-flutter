@@ -66,13 +66,15 @@ List<Widget> appbarWidgets(appName, category, type) {
         category,
         style: TextStyle(
             color: Color.fromRGBO(1, 138, 22, 1),
-            fontSize: (type != null || category.length > 8) ? 17 : 25,
+            fontSize: (type != null || category.length > 8) ? 18 : 25,
             fontWeight: FontWeight.bold),
       ),
       Text(
         type == null ? "" : type,
         style: TextStyle(
-            color: Colors.black, fontSize: 22, fontWeight: FontWeight.bold),
+            color: Colors.black,
+            fontSize: category.length < 5 ? 20 : 22,
+            fontWeight: FontWeight.bold),
       )
     ];
   }
