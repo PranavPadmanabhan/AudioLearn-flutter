@@ -1,13 +1,12 @@
 import 'package:audio_learn/components/CustomHeader.dart';
 import 'package:flutter/material.dart';
 import 'package:just_audio/just_audio.dart';
-// ignore: import_of_legacy_library_into_null_safe
 
-class AudioPlayer extends StatefulWidget {
-  const AudioPlayer({Key? key}) : super(key: key);
+class MediaPlayer extends StatefulWidget {
+  const MediaPlayer({Key? key}) : super(key: key);
 
   @override
-  _AudioPlayerState createState() => _AudioPlayerState();
+  _MediaPlayerState createState() => _MediaPlayerState();
 }
 
 var url =
@@ -59,9 +58,9 @@ List playlist = [
 ];
 
 var selectedIndex = null;
-late AudioPlayer audioPlayer;
+AudioPlayer audioPlayer = AudioPlayer();
 
-class _AudioPlayerState extends State<AudioPlayer> {
+class _MediaPlayerState extends State<MediaPlayer> {
   bool playing = false;
   togglePlayPause() async {
     if (playing) {
@@ -73,8 +72,10 @@ class _AudioPlayerState extends State<AudioPlayer> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    audioPlayer = AudioPlayer();
+    
   }
+
+  double duration = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -112,6 +113,13 @@ class _AudioPlayerState extends State<AudioPlayer> {
                             setState(() {
                               selectedIndex = index;
                               playing = true;
+                            });
+                            await audioPlayer.stop();
+                            await audioPlayer.setUrl(playlist[index]['url']);
+                            await audioPlayer.play();
+                            print(audioPlayer.duration!.inSeconds.toInt());
+                            setState(() {
+                              duration = audioPlayer.duration!.inSeconds.toDouble();
                             });
                           },
                           child: Container(
@@ -197,9 +205,11 @@ class _AudioPlayerState extends State<AudioPlayer> {
                     Container(
                       margin: EdgeInsets.symmetric(vertical: height * 0.03),
                       child: Slider(
-                          value: 10,
-                          onChanged: (val) {},
-                          max: 100,
+                          value: audioPlayer.bufferedPosition.inSeconds.toDouble(),
+                          onChanged: (val) async {
+
+                          }, 
+                          max: duration != null? duration:0,
                           activeColor: Color.fromRGBO(1, 138, 22, 1),
                           inactiveColor: Colors.grey.shade300),
                     )
